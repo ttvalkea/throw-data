@@ -9,7 +9,7 @@ export const createConnection = async (): Promise<Connection> => {
     const connection = await mysql.createConnection({
       host: "34.88.153.108",
       user: "root",
-      password: "TODO", // TODO: Can't have password's here. Fix.
+      password: "", // TODO: Can't have password's here. Fix.
       database: "first_test_db",
     });
     console.log("Database connection created successfully.");
