@@ -1,16 +1,19 @@
 import mysql, { Connection } from "promise-mysql";
+import dotenv from "dotenv";
+dotenv.config();
 
 let retriedToConnectAmount = 0;
 export const createConnection = async (): Promise<Connection> => {
   const maximumRetryConnectionCreationAttempts = 10;
 
   console.log("Creating database connection.");
+
   try {
     const connection = await mysql.createConnection({
-      host: "34.88.153.108",
-      user: "root",
-      password: "", // TODO: Can't have password's here. Fix.
-      database: "first_test_db",
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
     });
     console.log("Database connection created successfully.");
     retriedToConnectAmount = 0; // This is useless/doesn't do anything?
